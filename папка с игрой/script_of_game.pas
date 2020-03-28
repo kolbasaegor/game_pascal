@@ -1,4 +1,4 @@
-#2017 Stroganov Egor
+//2017 Stroganov Egor
 
 program fallout2D;
 
