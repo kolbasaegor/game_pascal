@@ -1,3 +1,5 @@
+#2017 Stroganov Egor
+
 program fallout2D;
 
 uses GraphABC;
@@ -71,16 +73,16 @@ begin
     xbot := random(0,1500);
     ybot := random(0,700);
   LockDrawing; 
-  {Цикл игры} 
+  {Г–ГЁГЄГ« ГЁГЈГ°Г»} 
   while (game = true) do
   begin
-      {Проверка на жизнь}
+      {ГЏГ°Г®ГўГҐГ°ГЄГ  Г­Г  Г¦ГЁГ§Г­Гј}
     if hp <= 0 then begin
       gameover.Draw(0, 0);
       game := false;
     end;
     location.Draw(0, 0);
-    {Движение} 
+    {Г„ГўГЁГ¦ГҐГ­ГЁГҐ} 
     if(left = 1) and (gun = true) then player_l_p.Draw(x, y);
     if(left = 1) and (gun = false) then player_l.Draw(x, y);
     if(left = 0) and (gun = true) then player_r_p.Draw(x, y);
@@ -89,21 +91,21 @@ begin
     if left = 1 then x := x - v;
     if up = 1 then y := y - v;
     if down = 1 then y := y + v;
-    {Статы}
+    {Г‘ГІГ ГІГ»}
     if hp >= 80 then HighHP.Draw(1300, 0);
     if (hp >= 30) and (hp < 80) then MediumHP.Draw(1300, 0);
     if (hp < 30) and (hp > 0) then LowHP.Draw(1300, 0);
       if hpbot >= 100 then begin HighHPbot.Draw(xbot - 5, ybot - 10); bot.Draw(xbot, ybot); end;
       if (hpbot >= 50) and (hpbot < 100) then begin MediumHPbot.Draw(xbot - 5, ybot - 10); bot50.Draw(xbot, ybot); end;
       if (hpbot < 50) and (hpbot > 0) then begin LowHPbot.Draw(xbot - 5, ybot - 10); bot25.Draw(xbot, ybot); end;
-      {Урон} {От бота}
+      {Г“Г°Г®Г­} {ГЋГІ ГЎГ®ГІГ }
       if hpbot > 0 then 
     if (((xbot + 20 < x)  and (xbot >= x)) and ((ybot + 40 < y)  and (ybot >= y)))
      or (((xbot - 20 < x)  and (xbot >= x)) and ((ybot - 40 < y)  and (ybot >= y)))
      or (((xbot - 20 < x)  and (xbot >= x)) and ((ybot + 40 < y)  and (ybot >= y)))
      or (((xbot + 20 < x)  and (xbot >= x)) and ((ybot - 40 < y)  and (ybot >= y)))
      then hp := hp - 2; 
-      {От игрока}
+      {ГЋГІ ГЁГЈГ°Г®ГЄГ }
       if left = 1 then xb := x + 6;
       if left = 0 then xb := x + 79;
       yb := y + 23;
@@ -128,12 +130,12 @@ begin
           ammo := ammo-1;
          end;
         m:=0;
-      {Мир}
+      {ГЊГЁГ°}
     if (x = 0) then left := 0;
     if (x + 84 = 1600) then right := 0;
     if (y = 0) then up := 0;
     if ((y + 100) = 872) then down := 0;
-     {Пистолет}
+     {ГЏГЁГ±ГІГ®Г«ГҐГІ}
     if gun = false then begin
       pistol.Draw(1300, 200);
       if (((1300 + 20 < x)  and (1300 + 160 >= x)) and ((200 + 20 < y)  and (200 + 20 >= y)))
@@ -143,7 +145,7 @@ begin
         then 
         gun := true;
     end;
-      {Бот}
+      {ГЃГ®ГІ}
     if hpbot > 0 then begin
       if xbot > x then xbot := xbot - vbot;
       if xbot < x then xbot := xbot + vbot;
@@ -151,14 +153,14 @@ begin
       if ybot < y then ybot := ybot + vbot; end; 
     if inventory = 0 then vbot := 3;
       if hpbot <= 0 then bot0.Draw(xbot, ybot);
-      {Инвентарь}
+      {Г€Г­ГўГҐГ­ГІГ Г°Гј}
     if  inventory = 1 then
     begin
       left := 0; right := 0; up := 0; down := 0;   
       vbot := 0;
       pipboy.Draw(400, 200);
     end;
-      {Смерть}
+      {Г‘Г¬ГҐГ°ГІГј}
     if hp <= 0 then  gameover.Draw(0, 0); 
     redraw;
   end;
